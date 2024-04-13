@@ -7,6 +7,7 @@ class App {
   public constructor() {
     this.express = express();
     this.middleware();
+    this.database();
   }
 
   // parse to json everything that pass thought the express
@@ -28,3 +29,6 @@ class App {
     // this.express.use(routes);
   }
 }
+
+// Já exporta instânciando e chamando o express dela
+export default new App().express;
