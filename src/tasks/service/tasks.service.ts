@@ -10,6 +10,11 @@ class TaskService {
     const deletedTask = await TaskModel.findByIdAndDelete(id);
     return `Task ${deletedTask?.title} deletada com sucesso.`;
   }
+
+  async findTasks() {
+    const foundedTasks = await TaskModel.find();
+    return foundedTasks;
+  }
 }
 
 export default new TaskService();

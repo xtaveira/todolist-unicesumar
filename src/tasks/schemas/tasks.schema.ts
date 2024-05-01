@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import usersSchema from "../../users/schema/users.schema";
 
 const tasksSchema = new Schema(
   {
@@ -7,9 +6,9 @@ const tasksSchema = new Schema(
     description: String,
     type: String,
     status: String,
-    associatedUser: { type: usersSchema },
+    associatedUser: { type: Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );
 
-export default model("tasks", tasksSchema);
+export default model("Task", tasksSchema, "tasks");

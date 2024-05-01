@@ -2,7 +2,7 @@ import app from "./app";
 
 function main() {
   app.listen(3000, "localhost", () => {
-    console.log("servidor funcionando");
+    console.log("Server Running...");
   });
 }
 main();

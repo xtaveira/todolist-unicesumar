@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import TaskService from "../service/tasks.service";
-import tasksService from "../service/tasks.service";
 
 class TaskController {
   async create(req: Request, res: Response) {
@@ -16,8 +15,13 @@ class TaskController {
   }
 
   async delete(req: Request, res: Response) {
-    const deleted = await tasksService.deleteTask(req.params.id);
+    const deleted = await TaskService.deleteTask(req.params.id);
     return res.json(deleted);
+  }
+
+  async find(req: Request, res: Response) {
+    const tasks = await TaskService.findTasks();
+    return res.json(tasks);
   }
 }
 

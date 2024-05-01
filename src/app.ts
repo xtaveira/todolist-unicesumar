@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import { routes } from "./routes";
 
 class App {
   public express: express.Application;
@@ -8,6 +9,7 @@ class App {
     this.express = express();
     this.middleware();
     this.database();
+    this.routes();
   }
 
   // parse to json everything that pass thought the express
@@ -19,14 +21,14 @@ class App {
     try {
       mongoose.set("strictQuery", true);
       await mongoose.connect("mongodb://0.0.0.0:27017/todolist");
-      console.log("connect database success");
+      console.log("MongoDB Connection established");
     } catch (error) {
       console.error(error);
     }
   }
 
   public routes(): void {
-    // this.express.use(routes);
+    this.express.use(routes);
   }
 }
 
